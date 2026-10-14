@@ -107,12 +107,50 @@ int main(){
                 printf("Calorias totais queimadas: %.1f", total_de_calorias);
 
                 break;
-            case 3:
 
-                printf("*** Seu relatório de treino: ***\n\n");
-                printf("Média de calorias gastas por treino: %.1f", total_de_calorias/quantidade_de_treino);
+            case 3:
+            {
+
+                double media_calorias = 0;
+                double media_minutos = 0;
+                int horas = total_de_minutos / 60; // horas completas de treino
+                int minutos = total_de_minutos % 60; // minutos restantes após as horas
+
+                if (quantidade_de_treino > 0) {
+                    media_calorias = total_de_calorias / quantidade_de_treino;
+                    media_minutos = (double) total_de_minutos / quantidade_de_treino;
+                    
+                } else {
+                    printf("Nenhum treino registrado ainda.\n");
+                    break;
+                }
+
+                printf("+==========================================+\n");
+                printf("         SEU RELATÓRIO DE TREINOS\n");
+                printf("+==========================================+\n\n");
+
+                printf("Treinos registrados: %d\n", quantidade_de_treino);
+                printf("Tempo total de treino: %dh %02dmin\n", horas, minutos);
+                printf("Calorias totais: %.1f kcal\n\n", total_de_calorias);
+
+                printf("Média por treino: %.1f min | %.1f kcal\n\n", media_minutos, media_calorias);
+
                 
+                if (total_de_calorias <= 300) {
+                    printf("Nível: INICIANTE. Não desanime, continue firme!\n");
+
+                } else if (total_de_calorias <= 1000) {
+                    printf("Nível: INTERMEDIÁRIO. Você está indo bem!\n");
+
+                } else {
+                    printf("Nível: AVANÇADO. Parabéns pela dedicação!\n");
+                }
+                printf("+==========================================+\n");
+                
+
                 break;
+            }
+
             case 4:
                 printf("Saindo do aplicativo. Até logo!\n");
                 break;
