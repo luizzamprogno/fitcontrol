@@ -33,8 +33,10 @@ int main(){
         printf("3. Ver relatório de treinos\n");
         printf("4. Sair\n");
         printf("\n");
+        
+        // Leitura da opção do menu inicial (protegida)
+        // validações de entrada de usuário
         printf("Opção: ");
-
         if (scanf("%d", &opcao) != 1) {
             int c;
             while ((c = getchar()) != '\n' && c != EOF); // Limpa o buffer do teclado
@@ -56,6 +58,7 @@ int main(){
                 printf("4. Bicicleta\n\n");
 
                 printf("Tipo de treino: ");
+                // validações de entrada de usuário
                 if (scanf("%d", &tipo_de_treino) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF);
@@ -63,13 +66,14 @@ int main(){
                 }
 
                 printf("Duração (min.): ");
+                // validações de entrada de usuário
                 if (scanf("%d", &duracao) != 1) {
                     int c;
                     while ((c = getchar()) != '\n' && c != EOF);
                     duracao = -1;
                 }
 
-                // só definir o fator
+                // só para definir o fator de calorias
                 // estimativas para uma pessoa de 70kg
 
                 if (tipo_de_treino == 1){
@@ -84,7 +88,7 @@ int main(){
 
                 // validar o fator antes de calcular
                 if (fator == 0){
-                    printf("Tipo de treino inválido.\n");
+                    printf("Tipo de treino inválido. Escolha um número de 1 a 4.\n");
                 } else if ( duracao <= 0) {
                     printf("Duração inválida, Digite um número maior que zero.\n");
                 } else {
@@ -121,7 +125,7 @@ int main(){
                     media_minutos = (double) total_de_minutos / quantidade_de_treino;
                     
                 } else {
-                    printf("Nenhum treino registrado ainda.\n");
+                    printf("Nenhum treino registrado ainda. Use a opção 1 para registrar.\n");
                     break;
                 }
 
@@ -155,10 +159,11 @@ int main(){
                 printf("Saindo do aplicativo. Até logo!\n");
                 break;
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Opção inválida. Digite um número de 1 a 4.\n");
                 break;
         }
         printf("\n");
+    // laço do while continua enquanto opcao é diferente de 4, reaparecendo o menu
     } while (opcao != 4);
     return 0;
 }
